@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://di751g4akdm1k"]
+
+[ext_resource type="Texture2D" uid="uid://dcelmdgepxv5v" path="res://assets/textures/background.png" id="1_n7b5t"]
+[ext_resource type="PackedScene" uid="uid://bae8nxcqdt3ii" path="res://characters/player/player.tscn" id="2_kju6h"]
+
+[node name="World" type="Node2D"]
+
+[node name="Background" type="Sprite2D" parent="."]
+texture = ExtResource("1_n7b5t")
+centered = false
+
+[node name="Player" parent="." instance=ExtResource("2_kju6h")]
+position = Vector2(115, 427)
+gravity_scale = 0.0
