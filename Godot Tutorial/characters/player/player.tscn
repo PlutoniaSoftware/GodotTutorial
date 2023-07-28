@@ -1,7 +1,9 @@
-[gd_scene load_steps=8 format=3 uid="uid://bae8nxcqdt3ii"]
+[gd_scene load_steps=10 format=3 uid="uid://bae8nxcqdt3ii"]
 
 [ext_resource type="Texture2D" uid="uid://dbrbh0p0fri5p" path="res://assets/textures/bird.png" id="1_5fotc"]
 [ext_resource type="Script" path="res://characters/player/player.gd" id="1_230p1"]
+[ext_resource type="AudioStream" uid="uid://dvp88wllrufe6" path="res://assets/audio/hit.wav" id="3_a1k2t"]
+[ext_resource type="AudioStream" uid="uid://m8axnwn1f8jc" path="res://assets/audio/wing.wav" id="4_earao"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_ctnm4"]
 radius = 19.0263
@@ -101,3 +103,11 @@ autoplay = "idle"
 libraries = {
 "": SubResource("AnimationLibrary_a5mmi")
 }
+
+[node name="Hit" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_a1k2t")
+volume_db = -15.0
+
+[node name="Wing" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_earao")
+volume_db = -15.0

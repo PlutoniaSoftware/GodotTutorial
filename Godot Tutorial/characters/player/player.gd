@@ -3,6 +3,8 @@ class_name Player
 
 @export var  FLAP_FORCE = -200
 @onready var animator = $AnimationPlayer
+@onready var hit = $Hit
+@onready var wing = $Wing
 
 signal died
 
@@ -36,9 +38,11 @@ func start():
 func flap():
 	linear_velocity.y = FLAP_FORCE
 	angular_velocity = -8.0
+	wing.play()
 	
 func die():
 	if !alive: return
 	alive = false
+	hit.play()
 	animator.stop()
 	emit_signal("died")
