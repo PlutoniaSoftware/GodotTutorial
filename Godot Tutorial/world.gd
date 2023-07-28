@@ -5,12 +5,16 @@ extends Node2D
 @onready var ground = $Ground
 @onready var menu_layer = $MenuLayer
 
+const SAVE_FILE_PATH = "user://savedata.save"
+
 var score = 0:
 	set = set_score
+
+var highscore = 0
 	
 func _ready():
 	obstacle_spawner.connect("obstacle_created", _on_obstacle_created)
-	# new_game()
+	load_highscore()
 	
 func new_game():
 	self.score = 0
@@ -38,7 +42,24 @@ func game_over():
 	obstacle_spawner.stop()
 	ground.get_node("AnimationPlayer").stop()
 	get_tree().call_group('obstacles', 'set_physics_process', false)
-	menu_layer.init_game_over_menu(score)
+	
+	if score > highscore:
+		highscore = score
+		save_highscore()
+		
+	menu_layer.init_game_over_menu(score, highscore)
 
 func _on_menu_layer_start_game():
 	new_game()
+	
+func save_highscore():
+	var save_data = FileAccess.open(SAVE_FILE_PATH, FileAccess.WRITE)
+	save_data.store_var(highscore)
+	save_data.close()
+	
+	
+func load_highscore():
+	if FileAccess.file_exists(SAVE_FILE_PATH):
+		var save_data = FileAccess.open(SAVE_FILE_PATH, FileAccess.READ)
+		highscore = save_data.get_var()
+		save_data.close()
