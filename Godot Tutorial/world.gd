@@ -3,13 +3,14 @@ extends Node2D
 @onready var hud = $HUD
 @onready var obstacle_spawner = $ObstacleSpawner
 @onready var ground = $Ground
+@onready var menu_layer = $MenuLayer
 
 var score = 0:
 	set = set_score
 	
 func _ready():
 	obstacle_spawner.connect("obstacle_created", _on_obstacle_created)
-	new_game()
+	# new_game()
 	
 func new_game():
 	self.score = 0
@@ -25,7 +26,6 @@ func set_score(new_score):
 func _on_obstacle_created(obs):
 	obs.connect("score", player_score)
 	
-
 func _on_dead_zone_body_entered(body):
 	if body is Player:
 		if body.has_method("die"):
@@ -38,3 +38,7 @@ func game_over():
 	obstacle_spawner.stop()
 	ground.get_node("AnimationPlayer").stop()
 	get_tree().call_group('obstacles', 'set_physics_process', false)
+	menu_layer.init_game_over_menu(score)
+
+func _on_menu_layer_start_game():
+	new_game()

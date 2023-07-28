@@ -1,0 +1,82 @@
+[gd_scene load_steps=4 format=3 uid="uid://dwpl03os3yrca"]
+
+[ext_resource type="Texture2D" uid="uid://qgegymbknf7e" path="res://assets/textures/message.png" id="1_hh03d"]
+[ext_resource type="Script" path="res://ui/menu_layer.gd" id="1_s3iu4"]
+[ext_resource type="FontFile" uid="uid://f8d2huqft4aj" path="res://assets/fonts/flappyfont.TTF" id="3_mt2nx"]
+
+[node name="MenuLayer" type="CanvasLayer"]
+script = ExtResource("1_s3iu4")
+metadata/_edit_vertical_guides_ = [240.0]
+
+[node name="StartMenu" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="StartMessage" type="TextureRect" parent="StartMenu"]
+layout_mode = 0
+offset_left = 102.0
+offset_top = 122.0
+offset_right = 378.0
+offset_bottom = 522.0
+texture = ExtResource("1_hh03d")
+
+[node name="GameOverMenu" type="Control" parent="."]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverMenu"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -188.0
+offset_top = -227.0
+offset_right = 188.0
+offset_bottom = 45.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 15
+
+[node name="ScoreLabel" type="Label" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("3_mt2nx")
+theme_override_font_sizes/font_size = 50
+text = "SCORE: 0"
+horizontal_alignment = 1
+
+[node name="HighScoreLabel" type="Label" parent="GameOverMenu/VBoxContainer"]
+layout_mode = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_offset_x = 0
+theme_override_constants/shadow_offset_y = 0
+theme_override_constants/shadow_outline_size = 15
+theme_override_fonts/font = ExtResource("3_mt2nx")
+theme_override_font_sizes/font_size = 50
+text = "BEST: 0"
+horizontal_alignment = 1
+
+[node name="Button" type="Button" parent="GameOverMenu/VBoxContainer"]
+custom_minimum_size = Vector2(0, 75)
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_mt2nx")
+theme_override_font_sizes/font_size = 50
+text = "RESTART"
+
+[connection signal="pressed" from="GameOverMenu/VBoxContainer/Button" to="." method="_on_button_pressed"]

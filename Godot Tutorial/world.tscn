@@ -1,14 +1,19 @@
-[gd_scene load_steps=7 format=3 uid="uid://di751g4akdm1k"]
+[gd_scene load_steps=8 format=3 uid="uid://di751g4akdm1k"]
 
 [ext_resource type="Script" path="res://world.gd" id="1_5aci2"]
 [ext_resource type="Texture2D" uid="uid://dcelmdgepxv5v" path="res://assets/textures/background.png" id="1_n7b5t"]
 [ext_resource type="PackedScene" uid="uid://bae8nxcqdt3ii" path="res://characters/player/player.tscn" id="2_kju6h"]
+[ext_resource type="PackedScene" uid="uid://dwpl03os3yrca" path="res://ui/menu_layer.tscn" id="3_t8gsr"]
 [ext_resource type="PackedScene" uid="uid://dfgd08vf3amt3" path="res://enviroments/ground.tscn" id="3_xbxyp"]
 [ext_resource type="PackedScene" uid="uid://b5we0ntuomuvw" path="res://enviroments/obstacle_spawner.tscn" id="4_d2wi1"]
 [ext_resource type="PackedScene" uid="uid://v2bogj2qfdx0" path="res://ui/hud.tscn" id="6_ittjf"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_5aci2")
+
+[node name="HUD" parent="." instance=ExtResource("6_ittjf")]
+
+[node name="MenuLayer" parent="." instance=ExtResource("3_t8gsr")]
 
 [node name="Background" type="Sprite2D" parent="."]
 texture = ExtResource("1_n7b5t")
@@ -24,8 +29,7 @@ position = Vector2(800, 0)
 [node name="Ground" parent="." instance=ExtResource("3_xbxyp")]
 position = Vector2(0, 686)
 
-[node name="HUD" parent="." instance=ExtResource("6_ittjf")]
-
+[connection signal="start_game" from="MenuLayer" to="." method="_on_menu_layer_start_game"]
 [connection signal="died" from="Player" to="." method="_on_player_died"]
 [connection signal="body_entered" from="Ground/DeadZone" to="." method="_on_dead_zone_body_entered"]
 
