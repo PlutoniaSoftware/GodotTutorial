@@ -25,3 +25,8 @@ position = Vector2(800, 0)
 position = Vector2(0, 686)
 
 [node name="HUD" parent="." instance=ExtResource("6_ittjf")]
+
+[connection signal="died" from="Player" to="." method="_on_player_died"]
+[connection signal="body_entered" from="Ground/DeadZone" to="." method="_on_dead_zone_body_entered"]
+
+[editable path="Ground"]
