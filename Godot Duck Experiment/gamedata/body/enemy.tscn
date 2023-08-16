@@ -1,0 +1,49 @@
+[gd_scene load_steps=7 format=3 uid="uid://bs22qwhgfvep2"]
+
+[ext_resource type="Texture2D" uid="uid://cttb0tjih87uc" path="res://gamedata/assets/enemy/duck_example.png" id="1_7qqru"]
+[ext_resource type="Script" path="res://gamedata/body/enemy.gd" id="1_sj8n8"]
+[ext_resource type="Texture2D" uid="uid://2mrbesn8d2ww" path="res://gamedata/assets/enemy/duck_example_fly2.png" id="2_ho6p6"]
+[ext_resource type="Texture2D" uid="uid://bov646qu5xqea" path="res://gamedata/assets/enemy/duck_example_fly3.png" id="3_5yvw1"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_37g84"]
+resource_local_to_scene = true
+animations = [{
+"frames": [{
+"duration": 0.7,
+"texture": ExtResource("1_7qqru")
+}, {
+"duration": 0.7,
+"texture": ExtResource("2_ho6p6")
+}, {
+"duration": 0.8,
+"texture": ExtResource("3_5yvw1")
+}, {
+"duration": 0.6,
+"texture": ExtResource("2_ho6p6")
+}],
+"loop": true,
+"name": &"default",
+"speed": 4.0
+}]
+
+[sub_resource type="GDScript" id="GDScript_vurtd"]
+script/source = "extends AnimatedSprite2D
+
+
+
+"
+
+[node name="Enemy" type="RigidBody2D"]
+script = ExtResource("1_sj8n8")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+position = Vector2(329, 160)
+scale = Vector2(5, 4.665)
+sprite_frames = SubResource("SpriteFrames_37g84")
+frame_progress = 0.2037
+script = SubResource("GDScript_vurtd")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+position = Vector2(-1313, -643)
+scale = Vector2(5, 5)
+polygon = PackedVector2Array(331, 145, 341, 152, 339, 164, 326, 167, 317, 161, 322, 154, 318, 151, 320, 146)
