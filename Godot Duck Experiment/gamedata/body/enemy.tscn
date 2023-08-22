@@ -40,7 +40,7 @@ script = ExtResource("1_sj8n8")
 position = Vector2(329, 160)
 scale = Vector2(5, 4.665)
 sprite_frames = SubResource("SpriteFrames_37g84")
-frame_progress = 0.2037
+frame_progress = 0.751111
 script = SubResource("GDScript_vurtd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]

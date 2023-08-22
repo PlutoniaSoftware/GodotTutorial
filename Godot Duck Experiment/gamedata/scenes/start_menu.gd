@@ -11,5 +11,6 @@ func _on_btn_exit_pressed():
 
 func _on_btn_level_01_pressed():
 	# menu.free()
-	get_tree().get_root().add_child(level01)
-	
+	# get_tree().get_root().add_child(level01)
+	get_tree().change_scene_to_file("res://gamedata/scenes/level_01.tscn")
+
