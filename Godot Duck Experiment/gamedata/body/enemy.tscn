@@ -34,6 +34,7 @@ script/source = "extends AnimatedSprite2D
 "
 
 [node name="Enemy" type="RigidBody2D"]
+mass = 2.0
 script = ExtResource("1_sj8n8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]

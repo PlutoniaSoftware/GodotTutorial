@@ -1,6 +1,65 @@
-[gd_scene load_steps=2 format=3 uid="uid://ccewbu7re8h3y"]
+[gd_scene load_steps=3 format=3 uid="uid://ccewbu7re8h3y"]
 
 [ext_resource type="Script" path="res://gamedata/scenes/level_01.gd" id="1_ja4sh"]
+[ext_resource type="PackedScene" uid="uid://dbwobia5galq3" path="res://gamedata/worlds/ground.tscn" id="2_1yxbo"]
 
-[node name="Level01" type="Node2D"]
+[node name="Level01" type="Area2D"]
 script = ExtResource("1_ja4sh")
+
+[node name="DebugOptions" type="BoxContainer" parent="." node_paths=PackedStringArray("shortcut_context")]
+top_level = true
+offset_right = 200.0
+offset_bottom = 80.0
+shortcut_context = NodePath("GravityScale/Gravity")
+vertical = true
+
+[node name="GravityScale" type="Label" parent="DebugOptions"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 10
+text = "Gravity Scale:
+"
+uppercase = true
+visible_characters_behavior = 1
+
+[node name="Gravity" type="LineEdit" parent="DebugOptions/GravityScale"]
+layout_mode = 2
+offset_left = 150.0
+offset_top = -3.0
+offset_right = 200.0
+offset_bottom = 17.0
+focus_mode = 1
+theme_override_font_sizes/font_size = 8
+placeholder_text = "No data"
+alignment = 1
+flat = true
+caret_blink = true
+caret_blink_interval = 0.5
+caret_force_displayed = true
+
+[node name="GridContainer" type="GridContainer" parent="DebugOptions"]
+layout_mode = 2
+columns = 2
+
+[node name="BackToMenu" type="Button" parent="DebugOptions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 10
+toggle_mode = true
+button_mask = 3
+text = "Menu
+"
+icon_alignment = 1
+
+[node name="ResetLevel" type="Button" parent="DebugOptions/GridContainer"]
+layout_mode = 2
+size_flags_horizontal = 10
+size_flags_vertical = 3
+text = "Reset
+"
+
+[node name="Ground" parent="." instance=ExtResource("2_1yxbo")]
+position = Vector2(0, 940)
+
+[connection signal="text_submitted" from="DebugOptions/GravityScale/Gravity" to="." method="_on_change_gravity"]
+[connection signal="pressed" from="DebugOptions/GridContainer/BackToMenu" to="." method="_on_button_pressed"]
+[connection signal="pressed" from="DebugOptions/GridContainer/ResetLevel" to="." method="_on_reset_level_pressed"]
