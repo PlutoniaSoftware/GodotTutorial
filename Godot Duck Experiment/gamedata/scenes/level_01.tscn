@@ -15,7 +15,7 @@ vertical = true
 
 [node name="GravityScale" type="Label" parent="DebugOptions"]
 layout_mode = 2
-theme_override_font_sizes/font_size = 10
+theme_override_font_sizes/font_size = 8
 text = "Gravity Scale:
 "
 uppercase = true
@@ -35,6 +35,24 @@ flat = true
 caret_blink = true
 caret_blink_interval = 0.5
 caret_force_displayed = true
+
+[node name="PlayerVelocityGrid" type="GridContainer" parent="DebugOptions"]
+layout_mode = 2
+columns = 3
+
+[node name="PlayerVelocityLabel" type="Label" parent="DebugOptions/PlayerVelocityGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+text = "Player Velocity x - y
+"
+
+[node name="PlayerVelocityX" type="Label" parent="DebugOptions/PlayerVelocityGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
+
+[node name="PlayerVelocityY" type="Label" parent="DebugOptions/PlayerVelocityGrid"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 8
 
 [node name="GridContainer" type="GridContainer" parent="DebugOptions"]
 layout_mode = 2

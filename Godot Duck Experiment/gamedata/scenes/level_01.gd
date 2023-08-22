@@ -11,18 +11,22 @@ func prepare_debug():
 	input_gravity_label.text = "Gravity Scale = " + str(input_gravity.text)
 	
 func modify_parameters():
+	#var duck = get_tree().get_node("")
+	#print(duck)
 	pass
+	
+func _process(delta):
+	modify_parameters()
 
 func _ready():
 	prepare_debug()
 	randomize()
 		
 	var duck = enemy.instantiate()
+	print(duck)
 	add_child(duck)
-	duck.position.y = randi()%400 + 150
+	# duck.position.y = randi()%400 + 150
 	
-
-
 func _on_change_gravity(new_text):
 	ProjectSettings.set_setting("physics/2d/default_gravity", int(input_gravity.text))
 	input_gravity_label.text = "Gravity Scale = " + str(input_gravity.text)

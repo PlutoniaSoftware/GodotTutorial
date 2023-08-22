@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c7g0a4fdi4nvf"]
+
+[ext_resource type="Script" path="res://gamedata/worlds/duck_spawner.gd" id="1_appmx"]
+
+[node name="duck_spawner" type="Node2D"]
+script = ExtResource("1_appmx")
+
+[node name="Timer" type="Timer" parent="."]
