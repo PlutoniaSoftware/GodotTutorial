@@ -1,8 +1,14 @@
-[gd_scene load_steps=2 format=3 uid="uid://c7g0a4fdi4nvf"]
+[gd_scene load_steps=3 format=3 uid="uid://c7g0a4fdi4nvf"]
 
 [ext_resource type="Script" path="res://gamedata/worlds/duck_spawner.gd" id="1_appmx"]
+[ext_resource type="Texture2D" uid="uid://xxw67jhsqkai" path="res://gamedata/assets/enemy/spawner.png" id="2_ieg01"]
 
 [node name="duck_spawner" type="Node2D"]
 script = ExtResource("1_appmx")
 
+[node name="SpawnPoint" type="Sprite2D" parent="."]
+texture = ExtResource("2_ieg01")
+
 [node name="Timer" type="Timer" parent="."]
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

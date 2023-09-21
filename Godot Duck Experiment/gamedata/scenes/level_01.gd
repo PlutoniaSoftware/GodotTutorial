@@ -3,6 +3,9 @@ extends Node2D
 var enemy = preload("res://gamedata/body/enemy.tscn")
 var gravity_scale = ProjectSettings.get("physics/2d/default_gravity")
 
+@onready var duck_spawner = $duck_spawner
+@onready var duck_spawner2 = $duck_spawner2
+@onready var duck_spawner3 = $duck_spawner3
 @onready var input_gravity = $DebugOptions/GravityScale/Gravity
 @onready var input_gravity_label = $DebugOptions/GravityScale
 
@@ -21,10 +24,13 @@ func _process(delta):
 func _ready():
 	prepare_debug()
 	randomize()
-		
-	var duck = enemy.instantiate()
-	print(duck)
-	add_child(duck)
+	
+	duck_spawner.start()
+	duck_spawner2.start()
+	duck_spawner3.start()
+	#var duck = enemy.instantiate()
+	#print(duck)
+	#add_child(duck)
 	# duck.position.y = randi()%400 + 150
 	
 func _on_change_gravity(new_text):

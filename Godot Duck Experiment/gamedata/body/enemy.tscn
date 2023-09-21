@@ -39,13 +39,13 @@ gravity_scale = 0.0
 script = ExtResource("1_sj8n8")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-position = Vector2(329, 160)
+position = Vector2(1.00002, 17)
 scale = Vector2(5, 4.665)
 sprite_frames = SubResource("SpriteFrames_37g84")
-frame_progress = 0.751111
+frame_progress = 0.165112
 script = SubResource("GDScript_vurtd")
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
-position = Vector2(-1313, -643)
+position = Vector2(-1641, -786)
 scale = Vector2(5, 5)
 polygon = PackedVector2Array(331, 145, 341, 152, 339, 164, 326, 167, 317, 161, 322, 154, 318, 151, 320, 146)

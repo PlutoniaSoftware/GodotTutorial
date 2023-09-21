@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://ccewbu7re8h3y"]
+[gd_scene load_steps=4 format=3 uid="uid://ccewbu7re8h3y"]
 
 [ext_resource type="Script" path="res://gamedata/scenes/level_01.gd" id="1_ja4sh"]
 [ext_resource type="PackedScene" uid="uid://dbwobia5galq3" path="res://gamedata/worlds/ground.tscn" id="2_1yxbo"]
+[ext_resource type="PackedScene" uid="uid://c7g0a4fdi4nvf" path="res://gamedata/worlds/duck_spawner.tscn" id="3_dowvt"]
 
 [node name="Level01" type="Area2D"]
 script = ExtResource("1_ja4sh")
@@ -75,8 +76,17 @@ size_flags_vertical = 3
 text = "Reset
 "
 
+[node name="duck_spawner" parent="." instance=ExtResource("3_dowvt")]
+position = Vector2(324, 174)
+
 [node name="Ground" parent="." instance=ExtResource("2_1yxbo")]
 position = Vector2(0, 940)
+
+[node name="duck_spawner2" parent="." instance=ExtResource("3_dowvt")]
+position = Vector2(822, 504)
+
+[node name="duck_spawner3" parent="." instance=ExtResource("3_dowvt")]
+position = Vector2(1167, 746)
 
 [connection signal="text_submitted" from="DebugOptions/GravityScale/Gravity" to="." method="_on_change_gravity"]
 [connection signal="pressed" from="DebugOptions/GridContainer/BackToMenu" to="." method="_on_button_pressed"]
